@@ -1,0 +1,24 @@
+{
+  "name": "settingsbill_with_expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxaba/SettingsBill-with-ExpressJS.git"
+  },
+  "author": "mxaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxaba/SettingsBill-with-ExpressJS/issues"
+  },
+  "homepage": "https://github.com/mxaba/SettingsBill-with-ExpressJS#readme",
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
+  }
+}
