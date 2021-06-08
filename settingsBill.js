@@ -14,11 +14,11 @@ module.exports = function () {
     };
   }
 
-  function setBillSettings(param) {
-    callCost = Number(param.callCost);
-    smsCost = Number(param.smsCost);
-    warningLevel = Number(param.warningLevel);
-    criticalLevel = Number(param.criticalLevel);
+  function setBillSettings(objectPassed) {
+    callCost = Number(objectPassed.callCost);
+    smsCost = Number(objectPassed.smsCost);
+    warningLevel = Number(objectPassed.warningLevel);
+    criticalLevel = Number(objectPassed.criticalLevel);
     getBillSettings();
   }
 

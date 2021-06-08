@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const settingsBill = require('./settingsBill');
 
+const settingsBillInstance = settingsBill();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -18,10 +19,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('index', { settings: settingsBill().getBillSettings() });
+  res.render('index', { getSetObject: settingsBillInstance.getBillSettings() });
 });
 
 app.post('/settings', (req, res) => {
+  console.log(req.body.callCost);
+  settingsBillInstance.setBillSettings({
+    callCost: req.body.callCost,
+    smsCost: req.body.smsCost,
+    warningLevel: req.body.warningLevel,
+    criticalLevel: req.body.criticalLevel,
+  });
   res.redirect('/');
 });
 
