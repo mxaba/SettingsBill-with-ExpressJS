@@ -12,6 +12,10 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({ layoutsDir: './views/layouts' }));
 app.set('view engine', 'handlebars');
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.listen(PORT, () => {
   console.log('App is running on port:', PORT);
 });
