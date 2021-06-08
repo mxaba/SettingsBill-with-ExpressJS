@@ -20,15 +20,17 @@
 
                 <div class="six columns">
                     <h5>Bill type</h5>
-                    <label class="">
-                        <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
-                        <span class="label-body">Call</span>
-                    </label>
-                    <label class="">
-                        <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
-                        <span class="label-body">SMS</span>
-                    </label>
-                    <button class="button-primary" type="button" name="button">Add</button>
+                    <form action="/action" method="post">
+                        <label class="">
+                            <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="call">
+                            <span class="label-body">Call</span>
+                        </label>
+                        <label class="">
+                            <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" value="sms">
+                            <span class="label-body">SMS</span>
+                        </label>
+                        <button class="button-primary" type="submit" name="button">Add</button>
+                    </form>
 
                     <h5>Totals</h5>
                     <table>
@@ -36,19 +38,19 @@
                             <td>
                                 <a href="/actions/calls">Call total</a>
                             </td>
-                            <td>R<span class="callTotalSettings">34.00</span> </td>
+                            <td>R<span class="callTotalSettings">{{getTotals.callTotal}}</span> </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="/actions/sms">SMS total</a>
                             </td>
-                            <td>R<span class="smsTotalSettings">7.35</span> </td>
+                            <td>R<span class="smsTotalSettings">{{getTotals.smsTotal}}</span> </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="/actions">Total</a>
                             </td>
-                            <td> R<span class="totalSettings">41.35</span> </td>
+                            <td> R<span class="totalSettings">{{grandTotal}}</span> </td>
                         </tr>
                     </table>
 
@@ -57,14 +59,17 @@
                     <h5>Settings</h5>
                     <form action="/settings" method="POST">
                         <label for="exampleEmailInput">Call cost</label>
-                        <input class="u-full-width callCostSetting" type="number" name="callCost" value="{{getSetObject.callCost}}" placeholder="eg. 2.55">
+                        <input class="u-full-width callCostSetting" type="text" name="callCost"
+                            value="{{getSetObject.callCost}}" placeholder="eg. 2.55">
                         <label for="exampleEmailInput">SMS cost</label>
-                        <input class="u-full-width smsCostSetting" type="number" name="smsCost" value="{{getSetObject.smsCost}}" placeholder="eg. 0.65">
+                        <input class="u-full-width smsCostSetting" type="text" name="smsCost"
+                            value="{{getSetObject.smsCost}}" placeholder="eg. 0.65">
                         <label for="">Warning level</label>
-                        <input class="u-full-width warningLevelSetting " type="number" name="warningLevel" value="{{getSetObject.warningLevel}}" placeholder="eg. 30.00"
-                            class="warningLevel">
+                        <input class="u-full-width warningLevelSetting " type="text" name="warningLevel"
+                            value="{{getSetObject.warningLevel}}" placeholder="eg. 30.00" class="warningLevel">
                         <label for="">Critical level</label>
-                        <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" value="{{getSetObject.criticalLevel}}" placeholder="eg. 65.00">
+                        <input class="u-full-width criticalLevelSetting" type="text" name="criticalLevel"
+                            value="{{getSetObject.criticalLevel}}" placeholder="eg. 65.00">
                         <button class="button-primary updateSettings" type="submit" name="button">Update
                             settings</button>
                     </form>

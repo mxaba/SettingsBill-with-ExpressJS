@@ -7,7 +7,6 @@ const settingsBill = require('./settingsBill');
 const settingsBillInstance = settingsBill();
 const app = express();
 const PORT = process.env.PORT || 5000;
-
 // Setting the public folder
 app.use(express.static('public'));
 
@@ -19,7 +18,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.render('index', { getSetObject: settingsBillInstance.getBillSettings() });
+  res.render('index', {
+    getSetObject: settingsBillInstance.getBillSettings(),
+    getTotals: settingsBillInstance.getTotals(),
+    grandTotal: settingsBillInstance.grandTotal(),
+  });
 });
 
 app.post('/settings', (req, res) => {
@@ -30,6 +33,12 @@ app.post('/settings', (req, res) => {
     warningLevel: req.body.warningLevel,
     criticalLevel: req.body.criticalLevel,
   });
+  res.redirect('/');
+});
+
+app.post('/action', (req, res) => {
+  settingsBillInstance.actionSetBillSettings(req.body.billItemTypeWithSettings);
+  console.log(req.body.billItemTypeWithSettings);
   res.redirect('/');
 });
 
