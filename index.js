@@ -22,11 +22,11 @@ app.get('/', (req, res) => {
     getSetObject: settingsBillInstance.getBillSettings(),
     getTotals: settingsBillInstance.getTotals(),
     grandTotal: settingsBillInstance.grandTotal(),
+    addClass: settingsBillInstance.addClass(),
   });
 });
 
 app.post('/settings', (req, res) => {
-  console.log(req.body.callCost);
   settingsBillInstance.setBillSettings({
     callCost: req.body.callCost,
     smsCost: req.body.smsCost,
@@ -37,8 +37,7 @@ app.post('/settings', (req, res) => {
 });
 
 app.post('/action', (req, res) => {
-  settingsBillInstance.actionSetBillSettings(req.body.billItemTypeWithSettings);
-  console.log(req.body.billItemTypeWithSettings);
+  settingsBillInstance.makeCallOrSms(req.body.billItemTypeWithSettings);
   res.redirect('/');
 });
 

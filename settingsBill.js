@@ -23,17 +23,20 @@ module.exports = function () {
     getBillSettings();
   }
 
-  function actionSetBillSettings(actionPassed) {
+  function makeCallOrSms(actionPassed) {
     let combinedCost;
-    if (actionPassed === 'call') {
-      combinedCost = callCost;
-    } else if (actionPassed === 'sms') {
-      combinedCost = smsCost;
-    } actionArray.push({
-      type: actionPassed,
-      timestamp: new Date(),
-      combinedCost,
-    });
+    // eslint-disable-next-line no-use-before-define
+    if (!(grandTotal() >= criticalLevel)) {
+      if (actionPassed === 'call') {
+        combinedCost = callCost;
+      } else if (actionPassed === 'sms') {
+        combinedCost = smsCost;
+      } actionArray.push({
+        type: actionPassed,
+        timestamp: new Date(),
+        combinedCost,
+      });
+    }
   }
 
   function setCallSms(actionTyp) {
@@ -60,11 +63,22 @@ module.exports = function () {
     };
   }
 
+  function addClass() {
+    let colorWord;
+    if (grandTotal() >= criticalLevel) {
+      colorWord = 'danger';
+    } if (grandTotal() >= warningLevel && grandTotal() < criticalLevel) {
+      colorWord = 'warning';
+    }
+    return colorWord;
+  }
+
   return {
     setBillSettings,
     getBillSettings,
-    actionSetBillSettings,
+    makeCallOrSms,
     getTotals,
     grandTotal,
+    addClass,
   };
 };
