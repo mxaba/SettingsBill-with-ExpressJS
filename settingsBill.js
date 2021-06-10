@@ -73,6 +73,10 @@ module.exports = function () {
     return colorWord;
   }
 
+  function getArray() {
+    return actionArray;
+  }
+
   return {
     setBillSettings,
     getBillSettings,
@@ -80,5 +84,6 @@ module.exports = function () {
     getTotals,
     grandTotal,
     addClass,
+    getArray,
   };
 };

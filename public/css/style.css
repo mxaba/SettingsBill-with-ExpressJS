@@ -20,3 +20,13 @@
     font-weight: bold;
     font-size: 2em;
   }
+
+  .center {
+    align-items: center;
+    text-align: center;
+  }
+
+  .cen {
+    margin-left:auto;
+    margin-right:auto
+  }

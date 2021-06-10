@@ -41,6 +41,12 @@ app.post('/action', (req, res) => {
   res.redirect('/');
 });
 
+app.get('/actions', (req, res) => {
+  const actions = settingsBillInstance.getArray();
+  console.log(actions);
+  res.render('actions', { act: actions });
+});
+
 app.listen(PORT, () => {
   console.log('App is running on port:', PORT);
 });

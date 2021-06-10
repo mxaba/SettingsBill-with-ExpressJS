@@ -1,0 +1,21 @@
+<div class="row center">
+    <h1>All <strong><i>Actions</i></strong> from settings bill</h1>
+
+    <table class="cen">
+        <tr>
+            <th>Type</th>
+            <th>When</th>
+            <th>Cost</th>
+        </tr>
+
+        {{#each act}}
+            <tr>
+                <td>{{type}}</td>
+                <td>{{timestamp}}</td>
+                <td>{{combinedCost}}</td>
+            </tr>
+        {{/each}}
+
+    </table>
+
+</div>
