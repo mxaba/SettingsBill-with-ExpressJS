@@ -77,6 +77,16 @@ module.exports = function () {
     return actionArray;
   }
 
+  function whichActions(_actionPassed) {
+    const filtered = [];
+    actionArray.forEach((_element) => {
+      if (_element.type === _actionPassed) {
+        filtered.push(_element);
+      }
+    });
+    return filtered;
+  }
+
   return {
     setBillSettings,
     getBillSettings,
@@ -85,5 +95,6 @@ module.exports = function () {
     grandTotal,
     addClass,
     getArray,
+    whichActions,
   };
 };

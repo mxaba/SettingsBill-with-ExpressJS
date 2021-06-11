@@ -2,6 +2,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+// eslint-disable-next-line no-unused-vars
+const moment = require('moment');
 const settingsBill = require('./settingsBill');
 
 const settingsBillInstance = settingsBill();
@@ -43,7 +45,10 @@ app.post('/action', (req, res) => {
 
 app.get('/actions', (req, res) => {
   const actions = settingsBillInstance.getArray();
-  console.log(actions);
+  actions.forEach((element) => {
+    // eslint-disable-next-line no-param-reassign
+    element.newTime = moment(element.timestamp).fromNow();
+  });
   res.render('actions', { act: actions });
 });
 
