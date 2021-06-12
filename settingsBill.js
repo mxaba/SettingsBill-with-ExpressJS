@@ -77,11 +77,13 @@ module.exports = function () {
     return actionArray;
   }
 
-  function whichActions(_actionPassed) {
+  function whichActions(actionPassed) {
     const filtered = [];
-    actionArray.forEach((_element) => {
-      if (_element.type === _actionPassed) {
-        filtered.push(_element);
+    console.log(actionPassed);
+    actionArray.forEach((element) => {
+      console.log(element.type);
+      if (element.type === actionPassed) {
+        filtered.push(element);
       }
     });
     return filtered;

@@ -52,6 +52,17 @@ app.get('/actions', (req, res) => {
   res.render('actions', { act: actions });
 });
 
+app.get('/actions/:type', (req, res) => {
+  console.log(req.params.type);
+  const actions = settingsBillInstance.whichActions(req.params.type);
+  // console.log(actions);
+  actions.forEach((element) => {
+    // eslint-disable-next-line no-param-reassign
+    element.newTime = moment(element.timestamp).fromNow();
+  });
+  res.render('actions', { act: actions });
+});
+
 app.listen(PORT, () => {
   console.log('App is running on port:', PORT);
 });
