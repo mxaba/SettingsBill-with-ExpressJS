@@ -1,9 +1,9 @@
 // eslint-disable-next-line func-names
 module.exports = function () {
-  let callCost;
-  let smsCost;
-  let warningLevel;
-  let criticalLevel;
+  let callCost = 0;
+  let smsCost = 0;
+  let warningLevel = 0;
+  let criticalLevel = 0;
   const actionArray = [];
 
   function getBillSettings() {
@@ -16,11 +16,13 @@ module.exports = function () {
   }
 
   function setBillSettings(objectPassed) {
-    callCost = parseFloat(objectPassed.callCost);
-    smsCost = parseFloat(objectPassed.smsCost);
-    warningLevel = parseFloat(objectPassed.warningLevel);
-    criticalLevel = parseFloat(objectPassed.criticalLevel);
-    getBillSettings();
+    if (objectPassed.callCost !== '' && objectPassed.smsCost !== '' && objectPassed.warningLevel !== '' && objectPassed.criticalLevel !== '') {
+      callCost = parseFloat(objectPassed.callCost);
+      smsCost = parseFloat(objectPassed.smsCost);
+      warningLevel = parseFloat(objectPassed.warningLevel);
+      criticalLevel = parseFloat(objectPassed.criticalLevel);
+      getBillSettings();
+    }
   }
 
   function makeCallOrSms(actionPassed) {
@@ -68,7 +70,7 @@ module.exports = function () {
 
   function addClass() {
     let colorWord;
-    if (grandTotal() >= criticalLevel) {
+    if (grandTotal() >= criticalLevel && grandTotal() > 0.00) {
       colorWord = 'danger';
     } if (grandTotal() >= warningLevel && grandTotal() < criticalLevel) {
       colorWord = 'warning';
