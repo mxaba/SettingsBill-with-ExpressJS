@@ -27,15 +27,17 @@ module.exports = function () {
     let combinedCost;
     // eslint-disable-next-line no-use-before-define
     if (!(grandTotal() >= criticalLevel)) {
-      if (actionPassed === 'call') {
-        combinedCost = callCost;
-      } else if (actionPassed === 'sms') {
-        combinedCost = smsCost;
-      } actionArray.push({
-        type: actionPassed,
-        timestamp: new Date(),
-        combinedCost,
-      });
+      if (actionPassed !== '') {
+        if (actionPassed === 'call') {
+          combinedCost = callCost;
+        } else if (actionPassed === 'sms') {
+          combinedCost = smsCost;
+        } actionArray.push({
+          type: actionPassed,
+          timestamp: new Date(),
+          combinedCost,
+        });
+      }
     }
   }
 
