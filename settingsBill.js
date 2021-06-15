@@ -24,15 +24,16 @@ module.exports = function () {
   }
 
   function makeCallOrSms(actionPassed) {
-    let combinedCost;
+    let combinedCost = '';
     // eslint-disable-next-line no-use-before-define
     if (!(grandTotal() >= criticalLevel)) {
-      if (actionPassed !== '') {
-        if (actionPassed === 'call') {
-          combinedCost = callCost;
-        } else if (actionPassed === 'sms') {
-          combinedCost = smsCost;
-        } actionArray.push({
+      if (actionPassed === 'call') {
+        combinedCost = callCost;
+      } else if (actionPassed === 'sms') {
+        combinedCost = smsCost;
+      }
+      if (combinedCost !== '') {
+        actionArray.push({
           type: actionPassed,
           timestamp: new Date(),
           combinedCost,
