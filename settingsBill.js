@@ -4,7 +4,7 @@ module.exports = function () {
   let smsCost = 0;
   let warningLevel = 0;
   let criticalLevel = 0;
-  const actionArray = [];
+  let actionArray = [];
 
   function getBillSettings() {
     return {
@@ -23,6 +23,15 @@ module.exports = function () {
       criticalLevel = parseFloat(objectPassed.criticalLevel);
       getBillSettings();
     }
+  }
+
+  function resetBill() {
+    callCost = 0;
+    smsCost = 0;
+    warningLevel = 0;
+    criticalLevel = 0;
+    actionArray = [];
+    getBillSettings();
   }
 
   function makeCallOrSms(actionPassed) {
@@ -103,5 +112,6 @@ module.exports = function () {
     addClass,
     getArray,
     whichActions,
+    resetBill,
   };
 };

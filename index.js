@@ -38,6 +38,15 @@ app.post('/settings', (req, res) => {
   res.redirect('/');
 });
 
+app.post('/reset', (req, res) => {
+  // if (req.body.criticalLevel > 0) {
+  console.log('Inside the if stamenet!!!');
+  settingsBillInstance.resetBill();
+  // }
+  console.log(settingsBillInstance.getBillSettings());
+  res.redirect('/');
+});
+
 app.post('/action', (req, res) => {
   settingsBillInstance.makeCallOrSms(req.body.billItemTypeWithSettings);
   res.redirect('/');
